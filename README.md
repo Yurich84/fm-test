@@ -1,4 +1,14 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center">
+<img height="80" src="https://laravel.com/img/logomark.min.svg">
+<img height="80" src="https://vuejs.org/images/logo.png" alt="Vue logo">
+<img height="80" src="https://cdn.worldvectorlogo.com/logos/element-ui-1.svg">
+</p>
+
+## Extensions
+
+- [Laravel 10](https://laravel.com/)
+- [Vue3 Composition Api](https://vuejs.org)
+- [ElementPlus](https://element-plus.org/)
 
 ## Install
 
