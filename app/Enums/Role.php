@@ -28,4 +28,14 @@ enum Role: string
 
         return $arr;
     }
+
+    public static function values(): array
+    {
+        return array_column(self::cases(), 'value');
+    }
+
+    public static function rand(): self
+    {
+        return self::cases()[array_rand(self::values())];
+    }
 }
