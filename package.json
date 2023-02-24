@@ -4,9 +4,18 @@
         "dev": "vite",
         "build": "vite build"
     },
-    "devDependencies": {
+    "dependencies": {
+        "@element-plus/icons-vue": "^2.0.10",
+        "@faker-js/faker": "^7.6.0",
+        "@vitejs/plugin-vue": "^4.0.0",
+        "@vue/compiler-sfc": "^3.2.29",
         "axios": "^1.1.2",
+        "element-plus": "^2.2.27",
         "laravel-vite-plugin": "^0.7.2",
-        "vite": "^4.0.0"
+        "postcss": "^8.1.14",
+        "resolve-url-loader": "4.0.0",
+        "sass": "^1.58.3",
+        "vite": "^4.0.0",
+        "vue": "3.2"
     }
 }

@@ -1,32 +1,27 @@
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
-
 import axios from 'axios';
 window.axios = axios;
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+import {ElMessage} from 'element-plus'
 
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
+let token = document.head.querySelector('meta[name="csrf-token"]')
+axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+axios.defaults.baseURL = window.config.baseURL
+axios.defaults.withCredentials = true
 
-// import Echo from 'laravel-echo';
+// Response interceptor
+axios.interceptors.response.use(response => response, error => {
+    if (error.response.data.message) {
+        console.error('--- ', error.response.data.message)
+    }
+    if (error.response?.status >= 500) {
+        ElMessage.error('Unknown server error!')
+    } else if (error.response?.status === 401 && error.response.data.message) {
+        ElMessage.error(error.response.data.message)
+    }
 
-// import Pusher from 'pusher-js';
-// window.Pusher = Pusher;
+    return Promise.reject(error)
+})
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: import.meta.env.VITE_PUSHER_APP_KEY,
-//     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER ?? 'mt1',
-//     wsHost: import.meta.env.VITE_PUSHER_HOST ? import.meta.env.VITE_PUSHER_HOST : `ws-${import.meta.env.VITE_PUSHER_APP_CLUSTER}.pusher.com`,
-//     wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
-//     wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
-//     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
-//     enabledTransports: ['ws', 'wss'],
-// });
+export default axios
+

@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+}
+*::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FDF1E4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+/* Button */
+
+button {
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 8px;
+
+    min-width: 160px;
+    height: 48px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+
+    cursor: pointer;
+
+    &.main-btn {
+        /* Block 1/Button Gradient */
+        color: #FFFFFF;
+        background: linear-gradient(90deg, #64362D 0%, #82544B 100%);
+        /* Block 1 / Button Stroke */
+        border: 1px solid #3E1007;
+        border-radius: 6px;
+
+        /* Label */
+        font-family:'Open Sans', serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+
+        &:active {
+            background: linear-gradient(90deg, #542E26 0%, #3A201B 100%);
+            color: #7B7771;
+        }
+    }
+
+    &.sec-btn {
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 24px;
+        gap: 8px;
+
+        min-width: 79px;
+        height: 48px;
+
+        opacity: 0.56;
+        /* Main/Content BG -46 (Font 24) */
+
+        border: 1px solid #D1CAC1;
+        border-radius: 6px;
+
+        &:active {
+            background: #ABA398;
+            color: #E1D8CC;
+        }
+
+    }
+}
