@@ -5,38 +5,44 @@
         :model="form"
         @submit.prevent="onSubmit"
     >
-        <el-form-item
-            prop="email"
-            class="form-group"
-            :rules="[
+        <el-row>
+            <el-col :span="18">
+                <el-form-item
+                    prop="email"
+                    class="form-group"
+                    :rules="[
             {
                 required: true,
                 message: 'Please input email address',
-                trigger: 'blur',
+                trigger: 'change',
             },
             {
                 type: 'email',
                 message: 'Please input correct email address',
-                trigger: ['blur', 'change'],
+                trigger: 'change',
             },
             ]"
-        >
-            <el-input
-                v-model="form.email"
-                name="email"
-                placeholder="Enter profile E-mails"
-                type="email"
-                @keydown.enter="addEmail"
-            />
-        </el-form-item>
-        <el-form-item class="form-group">
-            <el-button
-                type="primary"
-                @click="addEmail"
-            >
-                Add
-            </el-button>
-        </el-form-item>
+                >
+                    <el-input
+                        v-model="form.email"
+                        name="email"
+                        placeholder="Enter profile E-mails"
+                        type="email"
+                        @keydown.enter="addEmail"
+                    />
+                </el-form-item>
+            </el-col>
+            <el-col :span="6">
+                <el-form-item class="form-group">
+                    <el-button
+                        type="primary"
+                        @click="addEmail"
+                    >
+                        Add
+                    </el-button>
+                </el-form-item>
+            </el-col>
+        </el-row>
 
         <mail-services />
 
@@ -48,41 +54,46 @@
                 class="form-group"
                 required
             >
-                <div class="recipient">
-                    <div class="recipient__data">
-                        <div class="recipient__name">
-                            {{ recipient.name }}
+                <el-row class="recipient w-100">
+                    <el-col :span="12">
+                        <div class="recipient__data">
+                            <div class="recipient__name">
+                                {{ recipient.name }}
+                            </div>
+                            <div class="recipient__email">
+                                {{ recipient.email }}
+                            </div>
                         </div>
-                        <div class="recipient__email">
-                            {{ recipient.email }}
-                        </div>
-                    </div>
-                    <el-select
-                        v-model="recipient.role"
-                        class="recipient__role"
-                    >
-                        <el-option
-                            v-for="role in roles"
-                            :key="role.value"
-                            :label="role.value"
-                            :value="role.value"
-                            style="height: 70px;"
+                    </el-col>
+                    <el-col :span="8">
+                        <el-select
+                            v-model="recipient.role"
+                            class="recipient__role"
                         >
-                            <div style="font-size: 13px;">
-                                {{ role.value }}
-                            </div>
-                            <div style="font-size: 10px;">
-                                {{ role.text }}
-                            </div>
-                        </el-option>
-                    </el-select>
-                </div>
-                <el-icon @click="removeRecipient(i)">
-                    <RemoveFilled />
-                </el-icon>
+                            <el-option
+                                v-for="role in roles"
+                                :key="role.value"
+                                :label="role.value"
+                                :value="role.value"
+                                style="height: 70px;"
+                            >
+                                <div style="font-size: 13px;">
+                                    {{ role.value }}
+                                </div>
+                                <div style="font-size: 10px;">
+                                    {{ role.text }}
+                                </div>
+                            </el-option>
+                        </el-select>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-icon @click="removeRecipient(i)">
+                            <RemoveFilled />
+                        </el-icon>
+                    </el-col>
+                </el-row>
             </el-form-item>
         </div>
-
         <el-form-item
             prop="Message"
             class="form-group"
@@ -165,3 +176,15 @@ function onSubmit(e) {
 }
 
 </script>
+
+<style lang="scss">
+.recipients {
+
+    max-height: 300px;
+    overflow: hidden;
+    margin: 15px 0;
+    .recipient {
+        background: #F6EFE6;
+    }
+}
+</style>

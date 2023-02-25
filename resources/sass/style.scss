@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Open Sans', serif;
 }
 *::before, *::after {
     box-sizing: border-box;
@@ -14,30 +15,31 @@ body {
     padding: 0;
     margin: 0;
 }
+
 /* Button */
 
 button {
-    box-sizing: border-box;
-
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 24px;
-    gap: 8px;
-
-    min-width: 160px;
-    height: 48px;
-
-    /* Inside auto layout */
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-
-    cursor: pointer;
-
     &.main-btn {
+        box-sizing: border-box;
+
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 24px;
+        gap: 8px;
+
+        min-width: 160px;
+        height: 48px;
+
+        /* Inside auto layout */
+        flex: none;
+        order: 2;
+        flex-grow: 0;
+
+        cursor: pointer;
+
         /* Block 1/Button Gradient */
         color: #FFFFFF;
         background: linear-gradient(90deg, #64362D 0%, #82544B 100%);
@@ -83,4 +85,16 @@ button {
         }
 
     }
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.w-100 {
+    width: 100%;
 }

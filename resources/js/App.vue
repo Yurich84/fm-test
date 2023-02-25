@@ -8,8 +8,9 @@
 
     <el-dialog
         v-model="showPopupInvite"
-        title="Invite Others"
+        title="Invite others"
         width="598"
+        style="--el-dialog-bg-color: #FDF1E4;"
     >
         <invite-form
             @close="showPopupInvite = false"
