@@ -158,7 +158,7 @@ function addEmail() {
 }
 
 function removeRecipient (i) {
-    form.recipients.value.splice(i, 1)
+    form.value.recipients.splice(i, 1)
 }
 
 function onSubmit(e) {

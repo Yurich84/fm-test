@@ -11,8 +11,6 @@ class SendMailController extends Controller
 {
     public function __invoke(RecipientRequest $request): JsonResponse
     {
-        $request->validated();
-
         foreach ($request->recipients as $recipient) {
             Mail::to($recipient['email'])->later(now()->addMinute(), new InviteMail($request->input('message')));
         }
