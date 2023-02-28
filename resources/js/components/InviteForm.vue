@@ -10,18 +10,7 @@
                 <el-form-item
                     prop="email"
                     class="form-group"
-                    :rules="[
-            {
-                required: true,
-                message: 'Please input email address',
-                trigger: 'change',
-            },
-            {
-                type: 'email',
-                message: 'Please input correct email address',
-                trigger: 'change',
-            },
-            ]"
+                    :rules="email_rules"
                 >
                     <el-input
                         v-model="form.email"
@@ -120,7 +109,7 @@
 </template>
 
 <script setup>
-import {computed, ref} from 'vue'
+import {ref} from 'vue'
 import api from '../api'
 import {ElMessage} from 'element-plus'
 import {faker} from '@faker-js/faker'
@@ -134,6 +123,19 @@ const formRef = ref()
 const form = ref({recipients: []})
 const email = ref('')
 const roles = ref([])
+
+const email_rules = [
+    {
+        required: true,
+        message: 'Please input email address',
+        trigger: 'change',
+    },
+    {
+        type: 'email',
+        message: 'Please input correct email address',
+        trigger: 'change',
+    },
+]
 
 getRoles()
 
